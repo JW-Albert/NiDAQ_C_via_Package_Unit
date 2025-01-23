@@ -80,7 +80,7 @@ string CSVWriter::generateFilename() {
     char buffer[64];
     // Format the timestamp as "YYYY_MM_DD_HH_MM_SS"
     strftime(buffer, sizeof(buffer), "%Y_%m_%d_%H_%M_%S", &local_time);
-    snprintf(buffer + strlen(buffer), sizeof(buffer) - strlen(buffer), "_%03ld.csv", millis);
+    snprintf(buffer + strlen(buffer), sizeof(buffer) - strlen(buffer), "_%03lld.csv", millis);
 
     return outputDir + buffer; // Return the full path for the CSV file
 }
