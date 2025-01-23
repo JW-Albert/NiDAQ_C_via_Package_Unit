@@ -57,7 +57,7 @@ void CSVWriter::saveToCSV() {
 void CSVWriter::stop() {
     lock_guard<mutex> lock(queueMutex);
     while (!dataQueue.empty()) {
-        dataQueue.pop(); // æ¸?ç©ºæ?¸æ??ä½????
+        dataQueue.pop(); // Clear the data queue.
     }
     cout << "CSVWriter resources have been cleaned up." << endl;
 }
@@ -69,6 +69,7 @@ string CSVWriter::generateFilename() {
     auto duration = now.time_since_epoch();
     auto millis = chrono::duration_cast<chrono::milliseconds>(duration).count() % 1000;
     tm local_time;
+
 
 #ifdef _WIN32
     localtime_s(&local_time, &now_time);
